@@ -1,13 +1,66 @@
+/********************************************************************************/
+/* Fecha Creación:  08 Marzo 2021.                                              */
+/* Autor:           Iván Fonseca Castro                                         */
+/*                                                                              */
+/* Descripción:     Archivo principal para controlar los estilos del sitio web. */
+/********************************************************************************/
+
 @import "~bootstrap/scss/bootstrap.scss";
 
-/* 
+body{
+    background: rgb(79, 98, 142);
+}
 
-    You can write your own styles here...
-    
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
+.todoTopClass{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding: 15px;
+}
 
-*/
+h1{
+    font-size: 75px;
+    color: white;
+    font-weight: 700px;
+}
+
+// Clase del campo de entrada de los datos.
+.inputTodoClass{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.todoListClass{
+    display: flex;
+    flex-direction: column;
+}
+
+// Clase para dibujar las filas de las tareas.
+.todoRow{
+    background: rgb(255, 227, 170);
+    border: solid 1px lightgrey;
+    margin: 0px 0px 1px 45px;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+// Clase para marcar los registros cuando se completan las tareas,
+// esta responde al dar clic sobre las filas de las tareas.
+.todoRowComplete{
+    background:rgb(212, 177, 106);
+    border: solid 1px lightgrey;
+    text-decoration: line-through;
+    margin: 0px 0px 1px 45px;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.input-group {
+    width: 91% !important;
+}
+
+// Clase para los botones de eliminar y editar.
+.optionButtonClass{
+    justify-content: left;
+}
