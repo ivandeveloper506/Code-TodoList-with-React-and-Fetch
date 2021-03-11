@@ -25,17 +25,11 @@ export default function TodoForm(props) {
 	const handleSubmit = e => {
 		e.preventDefault();
 
-		console.log("Entro al handleSubmit");
-
 		props.onSubmit({
 			id: Math.floor(Math.random() * 10000),
-			// text: input
 			label: input,
-			// label: input,
 			done: false
 		});
-
-		console.log(props);
 
 		setInput("");
 	};

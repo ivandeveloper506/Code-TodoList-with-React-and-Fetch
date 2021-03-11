@@ -20,9 +20,6 @@ export default function TodoAdd({
 		value: ""
 	});
 
-	console.log("*** todos  - en componente todo-add.js ***");
-	console.log(todos);
-
 	const submitUpdate = value => {
 		updateTodo(edit.id, value);
 
@@ -38,9 +35,9 @@ export default function TodoAdd({
 
 	return todos.map((todo, index) => (
 		<div className="row">
-			<div class="input-group mb-1">
-				<div class="input-group-prepend todoRowCheckbox">
-					<div class="input-group-text checkboxClass">
+			<div className="input-group mb-1">
+				<div className="input-group-prepend todoRowCheckbox">
+					<div className="input-group-text checkboxClass">
 						<input
 							type="checkbox"
 							aria-label="Checkbox for following text input"

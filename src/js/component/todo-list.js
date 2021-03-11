@@ -10,21 +10,14 @@ import TodoForm from "./todo-form.js";
 import TodoAdd from "./todo-add.js";
 
 export default function TodoList() {
-	// const [todos, setTodos] = useState([]);
-	const [todos, setTodos] = useState([{ label: "", done: false }]);
+	const [todos, setTodos] = useState([{ id: null, label: "", done: false }]);
 
 	const addToDo = todo => {
 		if (!todo.label || /^\s*$/.test(todo.label)) {
 			return;
 		}
 
-		console.log("*** todo ***");
-		console.log(todo);
-
 		const newTodos = [todo, ...todos];
-
-		console.log("*** newTodos ***");
-		console.log(newTodos);
 
 		setTodos(newTodos);
 	};
@@ -112,15 +105,9 @@ export default function TodoList() {
 				},
 				body: JSON.stringify([])
 			}
-		)
-			// .then(response => {
-			// 	// if (response.ok) {
-			// 	// 	getListTodo();
-			// 	// }
-			// })
-			.catch(err => {
-				console.log(err);
-			});
+		).catch(err => {
+			console.log(err);
+		});
 	};
 
 	const deleteListTodo = async () => {
@@ -151,9 +138,6 @@ export default function TodoList() {
 	useEffect(() => {
 		getListTodo();
 	}, []);
-
-	console.log("*** listTodo ***");
-	console.log(todos);
 
 	return (
 		<div>
