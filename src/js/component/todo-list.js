@@ -110,12 +110,14 @@ export default function TodoList() {
 				headers: {
 					"Content-Type": "application/json"
 				},
-				body: []
+				body: JSON.stringify([])
 			}
 		)
-			.then(response => {
-				console.log(response);
-			})
+			// .then(response => {
+			// 	// if (response.ok) {
+			// 	// 	getListTodo();
+			// 	// }
+			// })
 			.catch(err => {
 				console.log(err);
 			});
@@ -137,6 +139,10 @@ export default function TodoList() {
 					alert("Las tareas han sido eliminadas satisfactoriamente!");
 				}
 			})
+			.then(response => {
+				getListTodo();
+			})
+			.then(createListTodo())
 			.catch(err => {
 				console.log(err);
 			});
