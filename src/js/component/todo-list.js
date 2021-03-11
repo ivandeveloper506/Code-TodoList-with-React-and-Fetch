@@ -41,11 +41,12 @@ export default function TodoList() {
 	const completeTodo = id => {
 		let updateTodos = todos.map(todo => {
 			if (todo.id === id) {
-				todo.isComplete = !todo.isComplete;
+				todo.done = !todo.done;
 			}
 
 			return todo;
 		});
+
 		setTodos(updateTodos);
 	};
 
@@ -64,6 +65,14 @@ export default function TodoList() {
 			.then(response => {
 				setTodos(
 					response.map((item, index) => {
+						if (item.id === null || item.id === undefined) {
+							item.id = 1;
+						}
+
+						console.log("*** getListTodo ***");
+						console.log(index);
+						console.log(item);
+
 						return item;
 					})
 				);

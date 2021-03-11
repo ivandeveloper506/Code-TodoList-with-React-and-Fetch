@@ -39,14 +39,16 @@ export default function TodoAdd({
 				<div className="input-group-prepend todoRowCheckbox">
 					<div className="input-group-text checkboxClass">
 						<input
+							checked={todo.done}
+							onClick={() => completeTodo(todo.id)}
 							type="checkbox"
-							aria-label="Checkbox for following text input"
+							aria-label="Checkbox for done"
 						/>
 					</div>
 				</div>
 				<div
 					className={
-						todo.isComplete
+						todo.done
 							? "col-6 col-sm-9 todoRowComplete"
 							: "col-6 col-sm-9 todoRow"
 					}
