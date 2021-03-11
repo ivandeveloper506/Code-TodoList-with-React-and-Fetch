@@ -40,9 +40,9 @@ h1{
 .todoRow{
     background: rgb(255, 227, 170);
     border: solid 1px lightgrey;
-    margin: 0px 0px 1px 45px;
+    // margin: 0px 0px 1px 45px;
     padding: 7px;
-    border-radius: 5px;
+    border-radius: 0px 5px 5px 0px;
 }
 
 // Clase para marcar los registros cuando se completan las tareas,
@@ -51,9 +51,17 @@ h1{
     background:rgb(212, 177, 106);
     border: solid 1px lightgrey;
     text-decoration: line-through;
-    margin: 0px 0px 1px 45px;
+    // margin: 0px 0px 1px 45px;
     padding: 7px;
-    border-radius: 5px;
+    border-radius: 0px 5px 5px 0px;
+}
+
+.todoRowCheckbox{
+      margin: 0px 0px 1px 45px;
+}
+
+.checkboxClass{
+    background: rgb(212, 177, 106);
 }
 
 .input-group {
