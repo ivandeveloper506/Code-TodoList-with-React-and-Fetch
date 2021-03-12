@@ -1,5 +1,5 @@
 /*******************************************************************************/
-/* Fecha Creación: 08 Marzo 2021.                                              */
+/* Fecha Creación: 11 Marzo 2021.                                              */
 /* Autor:          Iván Fonseca Castro                                         */
 /*                                                                             */
 /* Descripción:   Archivo principal que invoca el componente la primera vez    */

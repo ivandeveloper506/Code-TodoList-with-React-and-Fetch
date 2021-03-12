@@ -1,5 +1,5 @@
 /********************************************************************************/
-/* Fecha Creación:  08 Marzo 2021.                                              */
+/* Fecha Creación:  11 Marzo 2021.                                              */
 /* Autor:           Iván Fonseca Castro                                         */
 /*                                                                              */
 /* Descripción:     Archivo para crear componente que lista todas las tareas.   */
@@ -12,6 +12,7 @@ import TodoAdd from "./todo-add.js";
 export default function TodoList() {
 	const [todos, setTodos] = useState([{ id: null, label: "", done: false }]);
 
+	// Esta función agrega las tareas de forma individual en la lista.
 	const addToDo = todo => {
 		if (!todo.label || /^\s*$/.test(todo.label)) {
 			return;
@@ -22,6 +23,7 @@ export default function TodoList() {
 		setTodos(newTodos);
 	};
 
+	// Esta función actualiza las tareas cuando son editadas.
 	const updateTodo = (todoId, newValue) => {
 		if (!newValue.label || /^\s*$/.test(newValue.label)) {
 			return;
@@ -32,12 +34,15 @@ export default function TodoList() {
 		);
 	};
 
+	// Esta función elimina una tarea cuando se acciona el botón de eliminar sobre la fila.
 	const removeTodo = id => {
 		const removeArr = [...todos].filter(todo => todo.id !== id);
 
 		setTodos(removeArr);
 	};
 
+	// Esta función permite dar por completadas las tareas cada vez que se da click sobre el registro
+	// o cuando se selecciona el ckeckbox
 	const completeTodo = id => {
 		let updateTodos = todos.map(todo => {
 			if (todo.id === id) {
@@ -50,7 +55,9 @@ export default function TodoList() {
 		setTodos(updateTodos);
 	};
 
-	// Funciones para el Fetch
+	/* Funciones para el Fetch y comunicación con los métodos de la API. */
+
+	// Función para realizar GET y obtener todas las tareas desde la API.
 	const getListTodo = async () => {
 		await fetch(
 			"https://assets.breatheco.de/apis/fake/todos/user/ivandeveloper506",
@@ -69,16 +76,16 @@ export default function TodoList() {
 							item.id = 1;
 						}
 
-						console.log("*** getListTodo ***");
-						console.log(index);
-						console.log(item);
-
 						return item;
 					})
 				);
+			})
+			.catch(error => {
+				alert("OCURRIO UN ERROR INESPERADO:\n" + error);
 			});
 	};
 
+	// Función para realizar PUT y actualizar todas las tareas hacía la API.
 	const updateListTodo = async () => {
 		await fetch(
 			"https://assets.breatheco.de/apis/fake/todos/user/ivandeveloper506",
@@ -96,14 +103,13 @@ export default function TodoList() {
 						"Las tareas han sido actualizadas satisfactoriamente!"
 					);
 				}
-
-				console.log(response);
 			})
-			.catch(err => {
-				console.log(err);
+			.catch(error => {
+				alert("OCURRIO UN ERROR INESPERADO:\n" + error);
 			});
 	};
 
+	// Función para realizar POST y crear el usuario con una tarea por defecto en la API.
 	const createListTodo = async () => {
 		await fetch(
 			"https://assets.breatheco.de/apis/fake/todos/user/ivandeveloper506",
@@ -114,11 +120,12 @@ export default function TodoList() {
 				},
 				body: JSON.stringify([])
 			}
-		).catch(err => {
-			console.log(err);
+		).catch(error => {
+			alert("OCURRIO UN ERROR INESPERADO:\n" + error);
 		});
 	};
 
+	// Función para realizar DELETE y eliminar todas las tareas en la API.
 	const deleteListTodo = async () => {
 		await fetch(
 			"https://assets.breatheco.de/apis/fake/todos/user/ivandeveloper506",
@@ -139,23 +146,35 @@ export default function TodoList() {
 				getListTodo();
 			})
 			.then(createListTodo())
-			.catch(err => {
-				console.log(err);
+			.catch(error => {
+				alert("OCURRIO UN ERROR INESPERADO:\n" + error);
 			});
 	};
 
+	// Se invoca la función que permite obtener todas las tareas.
 	useEffect(() => {
 		getListTodo();
 	}, []);
 
 	return (
 		<div>
+			<div className="container mt-3">
+				<div className="row">
+					<h3>
+						<span className="badge badge-secondary ml-4">
+							Total de Tareas{" "}
+							<span className="badge badge-warning">
+								{todos.length}
+							</span>
+						</span>
+					</h3>
+				</div>
+			</div>
 			<div className="container todoTopClass">
 				<div className="row">
 					<h1>LISTA DE TAREAS</h1>
 				</div>
 			</div>
-
 			<div className="container inputTodoClass">
 				<TodoForm onSubmit={addToDo} />
 			</div>
